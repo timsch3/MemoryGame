@@ -1,0 +1,47 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+body { // Instructions/output and game board positioning
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    background-color: #eee;
+    article {
+        max-width: 25%;
+        padding-right: 40px;
+        h1, p {
+            padding: 20px;
+        }
+        #output, a {
+            font-family: monospace;
+            font-size: 1.2rem;
+            padding-top: 100px;
+            a {
+                color: darkblue;
+            }
+        }
+    }
+    #board { // Game board positioning
+        width: 100vh;
+        height: 100vh;
+        background-color: #aaa;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        align-items: center;
+        .card {
+            width: 24%;
+            height: 24%;
+            transform: rotateY(180deg);
+            transition: all .5s linear 0s;
+            div {
+                width: 100%;
+                height: 100%;
+                background: #222222;
+                transition: all .5s linear 0s;
+            }
+        }
+    }
+}

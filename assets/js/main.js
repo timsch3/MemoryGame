@@ -55,7 +55,7 @@ function flipCard(id) {
             firstCard.onclick = secondCard.onclick = null
             firstCard.style.position = secondCard.style.position = 'relative'
             firstCard.style.zIndex = secondCard.style.zIndex = zIndex
-            firstCard.style.animation = secondCard.style.animation = 'pairFound 0.9s ease-in 0.3s 1 normal forwards'
+            firstCard.style.animation = secondCard.style.animation = 'pairFound 0.9s ease-in 0.3s 1 forwards'
             zIndex++
         }
         // reset flipped cards
@@ -71,9 +71,10 @@ function flipCard(id) {
             secondCard = secondCardOverlay = null
             cardsFlipped = 1
         }
-    } // output score when finished
+    } // play animation and output score when finished
     if (pairsFound == 8) {
         document.getElementById('output').innerHTML = 'You finished with ' + tries + ' tries.<br><br><a href="index.html">Play again</a>'
+        cards.forEach((c) => { c.style.animation = 'finished ' + (Math.random() * 3) + 's ease-in 1 forwards' })
     }
 }
 

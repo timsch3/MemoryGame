@@ -49,15 +49,13 @@ function flipCard(id) {
                 tries++
                 break;
         }
-        // check for pairs
+        // check for pairs, make them animate and be shown on top of all other cards
         if (cardsFlipped == 2 && firstCard.style.background == secondCard.style.background) {
             pairsFound++
-            firstCard.style.position = 'relative'
-            firstCard.style.zIndex = zIndex
-            firstCard.style.animation = 'pairFound 0.9s ease-in 0.3s 1 normal forwards'
-            secondCard.style.position = 'relative'
-            secondCard.style.zIndex = zIndex
-            secondCard.style.animation = 'pairFound 0.9s ease-in 0.3s 1 normal forwards'
+            firstCard.onclick = secondCard.onclick = null
+            firstCard.style.position = secondCard.style.position = 'relative'
+            firstCard.style.zIndex = secondCard.style.zIndex = zIndex
+            firstCard.style.animation = secondCard.style.animation = 'pairFound 0.9s ease-in 0.3s 1 normal forwards'
             zIndex++
         }
         // reset flipped cards
@@ -70,8 +68,7 @@ function flipCard(id) {
             }
             firstCard = card
             firstCardOverlay = cardOverlay
-            secondCard = null
-            secondCardOverlay = null
+            secondCard = secondCardOverlay = null
             cardsFlipped = 1
         }
     } // output score when finished

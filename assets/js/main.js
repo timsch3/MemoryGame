@@ -74,13 +74,10 @@ function flipCard(id) {
             secondCardOverlay = null
             cardsFlipped = 1
         }
-    }
+    } // output score when finished
     if (pairsFound == 8) {
         document.getElementById('output').innerHTML = 'You finished with ' + tries + ' tries.<br><br><a href="index.html">Play again</a>'
     }
-    console.log('cardsFlipped: ' + cardsFlipped)
-    console.log('pairsFound: ' + pairsFound)
-    console.log('tries: ' + tries)
 }
 
 function getRandomIntInclusive(min, max) {

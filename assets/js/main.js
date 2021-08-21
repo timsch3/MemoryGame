@@ -18,7 +18,7 @@ function shuffleCards() {
     // set random images to card pairs
     let random = getRandomIntInclusive(1, 100)
     console.log(random)
-    cards[0].style.background = cards[1].style.background = 'url(https://picsum.photos/seed/' + random * 1 + '/ 500) center/cover no-repeat'
+    cards[0].style.background = cards[1].style.background = 'url(https://picsum.photos/seed/' + random * 1 + '/500) center/cover no-repeat'
     cards[2].style.background = cards[3].style.background = 'url(https://picsum.photos/seed/' + random * 2 + '/500) center/cover no-repeat'
     cards[4].style.background = cards[5].style.background = 'url(https://picsum.photos/seed/' + random * 3 + '/500) center/cover no-repeat'
     cards[6].style.background = cards[7].style.background = 'url(https://picsum.photos/seed/' + random * 4 + '/500) center/cover no-repeat'

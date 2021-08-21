@@ -71,10 +71,10 @@ function flipCard(id) {
             secondCard = secondCardOverlay = null
             cardsFlipped = 1
         }
-    } // play animation and output score when finished
+    } // play randomized animation and output score when finished
     if (pairsFound == 8) {
-        document.getElementById('output').innerHTML = 'You finished with ' + tries + ' tries.<br><br><a href="index.html">Play again</a>'
-        cards.forEach((c) => { c.style.animation = 'finished ' + (Math.random() * 3) + 's ease-in 1 forwards' })
+        setTimeout(() => { document.getElementById('output').innerHTML = 'You finished with ' + tries + ' tries.<br><br><a href="index.html">Play again</a>' }, 2000)
+        cards.forEach((c) => { c.style.animation = 'finished ' + (1 + Math.random()) + 's ease-in 1 forwards' })
     }
 }
 

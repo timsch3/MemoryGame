@@ -7,6 +7,7 @@ let secondCard
 let secondCardOverlay
 let pairsFound = 0
 let tries = 0
+let zIndex = 10
 
 function shuffleCards() {
     // add card elements to cards array
@@ -16,7 +17,7 @@ function shuffleCards() {
     // shuffle cards array
     cards.sort((a, b) => 0.5 - Math.random())
     // set random images to card pairs
-    let random = getRandomIntInclusive(1, 100)
+    let random = getRandomIntInclusive(1, 9999)
     console.log(random)
     cards[0].style.background = cards[1].style.background = 'url(https://picsum.photos/seed/' + random * 1 + '/500) center/cover no-repeat'
     cards[2].style.background = cards[3].style.background = 'url(https://picsum.photos/seed/' + random * 2 + '/500) center/cover no-repeat'
@@ -34,7 +35,7 @@ function flipCard(id) {
     if (card != firstCard && card != secondCard) {
         // flip card and track number of cards already flipped
         card.style.transform = 'rotateY(0)'
-        cardOverlay.style.backgroundColor = '#22222200'
+        cardOverlay.style.background = 'linear-gradient(to top left, var(--cardBacksideTransp), var(--cardBacksideTransp) 20%, var(--cardBackside2Transp) 20%, var(--cardBackside2Transp) 40%, var(--cardBacksideTransp) 40%, var(--cardBacksideTransp) 60%, var(--cardBackside2Transp) 60%, var(--cardBackside2Transp) 80%, var(--cardBacksideTransp) 80%, var(--cardBacksideTransp) 100%)'
         cardsFlipped++
         // store first and second flipped card
         switch (cardsFlipped) {
@@ -51,15 +52,21 @@ function flipCard(id) {
         // check for pairs
         if (cardsFlipped == 2 && firstCard.style.background == secondCard.style.background) {
             pairsFound++
-            firstCard.onclick = secondCard.onclick = ''
+            firstCard.style.position = 'relative'
+            firstCard.style.zIndex = zIndex
+            firstCard.style.animation = 'pairFound 0.9s ease-in 0.3s 1 normal forwards'
+            secondCard.style.position = 'relative'
+            secondCard.style.zIndex = zIndex
+            secondCard.style.animation = 'pairFound 0.9s ease-in 0.3s 1 normal forwards'
+            zIndex++
         }
         // reset flipped cards
         else if (cardsFlipped == 3) {
             if (firstCard.style.background != secondCard.style.background) {
                 firstCard.style.transform = secondCard.style.transform = 'rotateY(180deg)'
-                firstCardOverlay.style.backgroundColor = secondCardOverlay.style.backgroundColor = '#222222'
-                firstCard.style.transition = secondCard.style.transition = 'all .5s linear 0s'
-                firstCardOverlay.style.transition = secondCardOverlay.style.transition = 'all .5s linear 0s'
+                firstCardOverlay.style.background = secondCardOverlay.style.background = 'linear-gradient(to top left, var(--cardBackside), var(--cardBackside) 20%, var(--cardBackside2) 20%, var(--cardBackside2) 40%, var(--cardBackside) 40%, var(--cardBackside) 60%, var(--cardBackside2) 60%, var(--cardBackside2) 80%, var(--cardBackside) 80%, var(--cardBackside) 100%)'
+                firstCard.style.transition = secondCard.style.transition = 'all .3s linear 0s'
+                firstCardOverlay.style.transition = secondCardOverlay.style.transition = 'all .3s linear 0s'
             }
             firstCard = card
             firstCardOverlay = cardOverlay

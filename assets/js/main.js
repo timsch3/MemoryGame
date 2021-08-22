@@ -8,6 +8,8 @@ let secondCardOverlay
 let pairsFound = 0
 let tries = 0
 let zIndex = 10
+let winString1 = 'You finished with '
+let winString2 = ' tries.<br><br><a href="index.html">Play again</a>'
 
 function shuffleCards() {
     // add card elements to cards array
@@ -18,7 +20,6 @@ function shuffleCards() {
     cards.sort((a, b) => 0.5 - Math.random())
     // set random images to card pairs
     let random = getRandomIntInclusive(1, 9999)
-    console.log(random)
     cards[0].style.background = cards[1].style.background = 'url(https://picsum.photos/seed/' + random * 1 + '/500) center/cover no-repeat'
     cards[2].style.background = cards[3].style.background = 'url(https://picsum.photos/seed/' + random * 2 + '/500) center/cover no-repeat'
     cards[4].style.background = cards[5].style.background = 'url(https://picsum.photos/seed/' + random * 3 + '/500) center/cover no-repeat'
@@ -73,12 +74,25 @@ function flipCard(id) {
         }
     } // play animation and output score when finished
     if (pairsFound == 8) {
-        setTimeout(() => { document.getElementById('output').innerHTML = 'You finished with ' + tries + ' tries.<br><br><a href="index.html">Play again</a>' }, 2000)
+        setTimeout(() => { document.getElementById('output').innerHTML = winString1 + tries + winString2 }, 2000)
         let n = 0
         cards.forEach((c) => {
             c.style.animation = 'finished ' + (0.4 + n) + 's linear 1 forwards'
             n += 0.1
         })
+    }
+}
+
+// change strings to german if user browser is set to a german language
+function setLanguage() {
+    if (navigator.language == "de" || navigator.language == "de-DE" || navigator.language == "de-CH" || navigator.language == "de-AT" || navigator.language == "de-LU" || navigator.language == "de-LI") {
+        document.getElementById('instructions').innerHTML = `<h1>Spiele Memory</h1>
+        <p>
+            Klicke auf eine Karte um sie umzudrehen und das Bild darauf zu sehen, dann klicke auf eine weitere Karte.<br><br>Wenn die zwei Karten übereinstimmen hast du ein Paar gefunden und sie bleiben umgedreht.<br><br>Ziel des Spiels ist es, alle acht Paare in so wenigen Versuchen wie möglich zu finden.
+        </p>
+        <p id='output'></p>`
+        winString1 = 'Du hast das Spiel mit '
+        winString2 = ' Versuchen beendet.<br><br><a href="index.html">Nochmal spielen</a>'
     }
 }
 

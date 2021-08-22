@@ -15,7 +15,7 @@
     --cardBacksideTransp: #282d2e00;
     --cardBackside2Transp: #2b333500;
 }
-body { // Instructions/output and game board positioning
+body { // Instructions/output and game board positioning #02236f #1b5592
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -34,11 +34,15 @@ body { // Instructions/output and game board positioning
             font-weight: 600;
             font-size: 1.3rem;
             margin-top: 20px;
+            padding: 10px;
+            border-radius: 5px;
+            text-decoration: none;
             a {
-                color: #02236f;
+                background-color: var(--cardBackside2);
+                color: #fff;
             }
             a:hover {
-                color: #1b5592;
+                background-color: #2D585F;
             }
         }
     }

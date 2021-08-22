@@ -74,12 +74,14 @@ function flipCard(id) {
         }
     } // play animation and output score when finished
     if (pairsFound == 8) {
-        setTimeout(() => { document.getElementById('output').innerHTML = winString1 + tries + winString2 }, 2000)
-        let n = 0
-        cards.forEach((c) => {
-            c.style.animation = 'finished ' + (0.4 + n) + 's linear 1 forwards'
-            n += 0.1
-        })
+        setTimeout(() => {
+            let n = 0
+            cards.forEach((c) => {
+                c.style.animation = 'finished ' + (0.4 + n) + 's linear 1 forwards'
+                n += 0.1
+            })
+        }, 1200)
+        setTimeout(() => { document.getElementById('output').innerHTML = winString1 + tries + winString2 }, 3200)
     }
 }
 

@@ -77,10 +77,10 @@ function flipCard(id) {
     // play animation and output score when finished
     if (pairsFound == 8) {
         setTimeout(() => {
-            cards.sort()
+            cards.sort((a, b) => a.style.background - b.style.background)
             let n = 0
             cards.forEach((c) => {
-                c.style.animation = 'finished ' + (0.4 + n) + 's linear 1 forwards'
+                c.style.animation = 'finished ' + (0.4 + n) + 's ease-in-out 1 forwards'
                 n += 0.1
             })
         }, 1200)

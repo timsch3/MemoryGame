@@ -28,16 +28,16 @@ body { // Instructions/output and game board positioning #02236f #1b5592
         max-width: 25%;
         padding-right: 20px;
         h1, p {
-            padding: 20px 0 20px 20px;
+            padding: 20px 0;
         }
         #output, a {
             font-weight: 600;
             font-size: 1.3rem;
             margin-top: 20px;
-            padding: 10px;
             border-radius: 5px;
             text-decoration: none;
             a {
+                padding: 10px;
                 background-color: var(--cardBackside2);
                 color: #fff;
             }
